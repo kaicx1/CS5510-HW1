@@ -80,7 +80,7 @@ def execute_subsetsums_sample(t, predicates):
 ```
 
 ### PART C
-**i) Compute Accuracy**
+**Compute Accuracy**
 ```
  def eval_round(R, predicates, data):
     """compares round vs actual answers
@@ -122,22 +122,34 @@ def eval_sample(t, predicates, data ):
     return rmse, success
 ```
 
-**ii) Success Fraction vs Parameter AND RMSE vs Parameter**
+**Success Fraction vs Parameter AND RMSE vs Parameter AND RMSE vs Success Fraction**
+---
+**ROUNDING**
 
-ROUNDING
-Transition: 
-Results:
+Transition: At R=10 (.64799999)
 
+Results: Sucess Fraction went down as R increased, but started to rise back to Majority Value at 40 and reached Majority value consistantly past 60. Rounding was the stronggest around R=20 through R=40. Rounding was not a successful defensive measure from R=1 through R=10.
+
+![alt text](https://github.com/kaicx1/CS5510-HW1/blob/main/roundgraphs.png)
+![alt_text](https://github.com/kaicx1/CS5510-HW1/blob/main/roundNvsS.png)
+---
 NOISE
-Transition: 
-Results:
 
-SAMPLING - When t is Small 
-Transition: 
-Results:
+Transition: At R=4 (.517)
 
-**iii) Trade-OFF** 
+Results: At low noise levels (Sigma) reconstruction was nearly perfect. The addition of Gaussain noise performs well when Sigma is close to 5 as recontruction success is .385 while still retaining accuracy. The graph shows an inverse logrithmic curve showing that after Sigma passes ~20 there is diminishing returns. Smaller Sigma provided low privacy with higher accuracy. Larger Sigma provides higher privacy with lower accuracy. The Success vs RSME graph shows a reverse logmarithic graph.
 
+![alt_text](https://github.com/kaicx1/CS5510-HW1/blob/main/noisegraphs.png)
+![alt_text](https://github.com/kaicx1/CS5510-HW1/blob/main/noiseNvsS.png)
+---
+SAMPLING
+
+Transition: N/A when t=1 (.6500000000001)
+
+Results: When t is small we see a lower reconstruction rate that never crosses Majority Value, but as t grows the rate of reconstruction is hightend. Larger Samples yield a higher reconstruction rate. When the Samples sizes t reach around 70 the reconstruction rate jumps to around .90. Sampling seems to best used around t = 65 as accuracy is relativly high without the trade off of higher reconstruction attack success rate. The Success vs RSME graph shows an inverse logmarithic curve indicating that t = ~65 is a area that supports both accuracy and privacy. 
+
+![alt_text](https://github.com/kaicx1/CS5510-HW1/blob/main/samplegraphs.png)
+![alt_text](https://github.com/kaicx1/CS5510-HW1/blob/main/sampleNvsS.png)
 ---
 ## Quetion Two: A Bayesian Interpretation of MIAs
 
